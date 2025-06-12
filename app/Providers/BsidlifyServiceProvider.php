@@ -58,6 +58,7 @@ class BsidlifyServiceProvider extends ServiceProvider
                 \App\Console\Commands\ApiDocs\GenerateCommand::class,
                 \App\Console\Commands\Queue\MonitorCommand::class,
                 \App\Console\Commands\Localization\SyncCommand::class,
+                \App\Console\Commands\DocsCommand::class,
             ]);
         }
     }
