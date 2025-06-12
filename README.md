@@ -322,4 +322,4 @@ In order to ensure that the Bsidlify community is welcoming to all, please revie
 
 ## License
 
-The Bsidlify framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Bsidlify framework is open-source software licensed under the [MIT license](https://github.com/bsidlify4u/bsidlify?tab=MIT-1-ov-file).
