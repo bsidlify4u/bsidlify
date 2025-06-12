@@ -44,7 +44,7 @@ php bsidlify key:generate
 ### Clone Repository
 
 ```bash
-git clone https://github.com/bsidlify/bsidlify.git my-project
+git clone https://github.com/bsidlify4u/bsidlify.git my-project
 cd my-project
 composer install
 cp .env.example .env
