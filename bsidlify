@@ -1,0 +1,74 @@
+#!/usr/bin/env php
+<?php
+
+define('BSIDLIFY_START', microtime(true));
+
+// Check if vendor/autoload.php exists before requiring it
+$autoloadPath = __DIR__.'/vendor/autoload.php';
+if (!file_exists($autoloadPath)) {
+    echo "\033[31mError: Autoloader file not found.\033[0m" . PHP_EOL;
+    echo "The autoloader file at '{$autoloadPath}' does not exist." . PHP_EOL;
+    echo "Please run \033[33mcomposer install\033[0m to make sure all required dependencies are properly installed." . PHP_EOL;
+    exit(1);
+}
+
+// Only use and import classes after we've checked that the autoloader exists
+require $autoloadPath;
+
+use App\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+// Check if bootstrap/app.php exists
+$bootstrapPath = __DIR__.'/bootstrap/app.php';
+if (!file_exists($bootstrapPath)) {
+    echo "\033[31mError: Application bootstrap file not found.\033[0m" . PHP_EOL;
+    echo "The bootstrap file at '{$bootstrapPath}' does not exist." . PHP_EOL;
+    echo "Make sure your application is properly installed." . PHP_EOL;
+    exit(1);
+}
+
+// Create input handler for flags
+$input = new ArgvInput;
+
+// Set debug mode if requested
+if ($input->hasParameterOption('--debug')) {
+    define('BSIDLIFY_DEBUG', true);
+}
+
+try {
+    // Bootstrap Bsidlify and handle the command...
+    /** @var Application $app */
+    $app = require_once $bootstrapPath;
+
+    // If this is a version request or list command, customize the output
+    if ($input->hasParameterOption('--version') || $input->hasParameterOption('-V')) {
+        echo 'Bsidlify Framework ' . $app->version() . PHP_EOL;
+        exit(0);
+    }
+
+    // Start output buffering for the list command
+    if ($input->getFirstArgument() === 'list' || $input->getFirstArgument() === null) {
+        ob_start();
+    }
+
+    $status = $app->handleCommand($input);
+
+    // Process command output
+    if ($input->getFirstArgument() === 'list' || $input->getFirstArgument() === null) {
+        $output = ob_get_clean();
+        echo $output;
+    }
+
+    exit($status);
+} catch (Throwable $e) {
+    echo "\033[31mError: " . $e->getMessage() . "\033[0m" . PHP_EOL;
+    
+    if (getenv('BSIDLIFY_DEBUG') || (defined('BSIDLIFY_DEBUG') && BSIDLIFY_DEBUG)) {
+        echo "\nStack trace:\n";
+        echo $e->getTraceAsString() . PHP_EOL;
+    } else {
+        echo "For more details, set BSIDLIFY_DEBUG=true in your environment or run with --debug option." . PHP_EOL;
+    }
+    
+    exit(1);
+}
