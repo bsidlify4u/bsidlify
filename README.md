@@ -1,14 +1,7 @@
 # Bsidlify Framework
 
 <p align="center">
-    <img src="https://pbs.twimg.com/profile_images/1919384588679331840/shMwCk-E_400x400.jpg" alt="Bsidlify Logo" width="200" height="200">
-</p>
-
-<p align="center">
-    <a href="https://packagist.org/packages/bsidlify/bsidlify"><img src="https://img.shields.io/packagist/v/bsidlify/bsidlify.svg" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/bsidlify/bsidlify"><img src="https://img.shields.io/packagist/l/bsidlify/bsidlify.svg" alt="License"></a>
-    <a href="https://packagist.org/packages/bsidlify/bsidlify"><img src="https://img.shields.io/packagist/dt/bsidlify/bsidlify.svg" alt="Total Downloads"></a>
-    <a href="https://github.com/bsidlify/bsidlify/actions"><img src="https://github.com/bsidlify/bsidlify/workflows/tests/badge.svg" alt="Build Status"></a>
+    <img src="https://pbs.twimg.com/profile_images/1919384588679331840/shMwCk-E_400x400.jpg" alt="Bsidlify Logo" width="100" height="100">
 </p>
 
 ## About Bsidlify
