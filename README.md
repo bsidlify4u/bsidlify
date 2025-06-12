@@ -1,7 +1,7 @@
 # Bsidlify Framework
 
 <p align="center">
-    <img src="https://via.placeholder.com/200x200?text=Bsidlify" alt="Bsidlify Logo" width="200" height="200">
+    <img src="https://pbs.twimg.com/profile_images/1919384588679331840/shMwCk-E_400x400.jpg" alt="Bsidlify Logo" width="200" height="200">
 </p>
 
 <p align="center">
